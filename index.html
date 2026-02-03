@@ -1,220 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DawnCraft</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DawnCraft</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #0f1115;
-      --card: rgba(255, 255, 255, 0.08);
-      --border: rgba(255, 255, 255, 0.15);
-      --text: #e5e7eb;
-      --accent: #a78bfa;
-    }
+<style>
+:root {
+  --bg: #1a2a12; /* dark green background */
+  --card: rgba(255, 165, 0, 0.15); /* soft orange card background */
+  --border: rgba(255, 165, 0, 0.3); /* orange border */
+  --text: #e5e7eb; /* off-white text */
+  --accent: #7dbb2a; /* bright green accent */
+}
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth; /* 🔥 SMOOTH SCROLL */
-    }
+/* Global */
+* { box-sizing:border-box; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: radial-gradient(circle at top, #2b4a18, var(--bg));
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+  overflow-x: hidden;
+}
 
-    body {
-      margin: 0;
-      font-family: Inter, sans-serif;
-      background: radial-gradient(circle at top, #1a1d2b, var(--bg));
-      color: var(--text);
-      line-height: 1.6;
-    }
+/* Headings */
+h1,h2,h3 { margin: 0 0 16px; }
+h1 { font-family: 'Press Start 2P', cursive; font-size: 48px; letter-spacing: 2px; color: var(--accent); }
+h2 { font-family: 'Press Start 2P', cursive; font-size: 28px; color: #ff9900; }
+h3 { font-family: 'Press Start 2P', cursive; font-size: 16px; color: var(--accent); }
+p { max-width: 700px; opacity: 0.85; }
 
-    section {
-      padding: 90px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+/* NAV */
+nav {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  z-index: 100;
+}
+nav a { color: var(--text); text-decoration: none; font-size: 14px; opacity: 0.8; }
+nav a:hover { opacity: 1; color: var(--accent); }
 
-    h1, h2, h3 {
-      font-family: Montserrat, sans-serif;
-      margin: 0 0 16px;
-    }
+/* Sections */
+section { margin-top: 80px; padding: 60px 20px; position: relative; z-index: 2; }
 
-    h1 {
-      font-size: 64px;
-      letter-spacing: 2px;
-    }
+/* Hero */
+.hero { text-align: center; }
+.hero p { font-size: 16px; margin: 20px auto 40px; }
 
-    h2 {
-      font-size: 36px;
-    }
+/* Buttons */
+.download-btn {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 18px 36px;
+  font-family: 'Press Start 2P', cursive;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.download-btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+  transform: translateY(-2px);
+}
 
-    p {
-      max-width: 700px;
-      opacity: 0.85;
-    }
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.card {
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  backdrop-filter: blur(12px);
+  transition: 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
+.card h3 { margin-bottom: 12px; }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 150px 20px;
-    }
+/* Tables */
+.stats-table {
+  width: 100%;
+  max-width: 900px;
+  border-collapse: separate;
+  border-spacing: 6px;
+  margin: 20px auto;
+  font-family: 'Press Start 2P', cursive;
+}
+.stats-table th, .stats-table td {
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 10px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  background: var(--card);
+  transition: 0.3s;
+}
+.stats-table th { background: rgba(125,187,42,0.25); color: var(--accent); }
+.stats-table td:hover { background: rgba(125,187,42,0.1); }
 
-    .hero p {
-      font-size: 18px;
-      margin: 20px auto 40px;
-    }
+/* FAQ */
+.faq { max-width: 800px; margin: 20px auto; }
+.faq-item {
+  margin-bottom: 20px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+.faq-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent);
+}
 
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      text-decoration: none;
-      backdrop-filter: blur(12px);
-      transition: 0.25s ease;
-    }
-
-    .btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      padding: 12px 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      backdrop-filter: blur(14px);
-      z-index: 100;
-    }
-
-    nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    nav a:hover {
-      opacity: 1;
-      color: var(--accent);
-    }
-
-    /* CARDS */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .card {
-      padding: 28px;
-      border-radius: 18px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(14px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      opacity: 0.6;
-      font-size: 14px;
-    }
-  </style>
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  opacity: 0.6;
+  font-size: 14px;
+  margin-top: 60px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#features">Features</a>
-    <a href="#download">Download</a>
-  </nav>
+<!-- NAV -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#download">Download</a>
+  <a href="#faq">FAQ</a>
+  <a href="#report">Report Issues</a>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>DawnCraft</h1>
-    <p>A reimagined Minecraft experience</p>
+<!-- HERO -->
+<section class="hero">
+  <h1>DawnCraft</h1>
+  <p>A Minecraft-inspired adventure modpack focused on exploration, progression, and optimized Vanilla+ gameplay.</p>
+  <a href="https://github.com/McDawnCodes/DonSMP-Modpack/releases/download/Vanilla%2B/Vanilla+.1.0.0.mrpack" 
+     class="download-btn" download>⬇️ Download DawnCraft</a>
+</section>
 
-    <div class="buttons">
-      <a href="#download" class="btn">Download Modpack</a>
-      <a href="https://discord.gg/" class="btn">Join Discord</a>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>DawnCraft is designed for players seeking an immersive Minecraft experience with smooth performance, Vanilla+ enhancements, and exciting progression mechanics. Includes over 100 carefully curated mods compatible with Fabric and Java 1.21.11.</p>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <h2>Features & Version Timeline</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>⛏️ Immersive Progression</h3>
+      <p>Custom advancement paths reward exploration, crafting, and combat mastery.</p>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>What is DawnCraft?</h2>
-    <p>
-      DawnCraft is a carefully curated modpack focused on immersion,
-      exploration, and progression.
-      <br><br>
-      Designed for smooth performance and long-term worlds,
-      it blends modern mechanics with a grounded fantasy feel.
-    </p>
-  </section>
-
-  <!-- FEATURES -->
-  <section id="features">
-    <h2>Features</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Immersive Progression</h3>
-        <p>Meaningful advancement with guided progression that rewards exploration and mastery.</p>
-      </div>
-
-      <div class="card">
-        <h3>Optimized Performance</h3>
-        <p>Configured for smooth gameplay without sacrificing visuals.</p>
-      </div>
-
-      <div class="card">
-        <h3>Multiplayer Ready</h3>
-        <p>Balanced for both solo play and SMP environments.</p>
-      </div>
+    <div class="card">
+      <h3>🧱 Optimized Performance</h3>
+      <p>Over 100 mods carefully curated for smooth gameplay on Java 1.21.11.</p>
     </div>
-  </section>
-
-  <!-- DOWNLOAD -->
-  <section id="download">
-    <h2>Download DawnCraft</h2>
-
-    <div class="cards">
-      <div class="card">
-        <h3>GitHub Release</h3>
-        <p>Vanilla+ Modpack</p>
-        <br>
-        <a class="btn" href="https://github.com/McDawnCodes/DonSMP-Modpack/releases/tag/Vanilla%2B" target="_blank">
-          Download
-        </a>
-      </div>
+    <div class="card">
+      <h3>🗡️ Multiplayer Ready</h3>
+      <p>Perfectly balanced for both solo play and SMP servers.</p>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © DawnCraft • Not affiliated with Microfost or Mojang Studios. All Rights Reserved
-  </footer>
+  <h3 style="margin-top:40px;">Minecraft Version Timeline</h3>
+  <table class="stats-table">
+    <tr><th>Version</th><th>Release Year</th><th>Major Features</th></tr>
+    <tr><td>1.7</td><td>2013</td><td>Biomes, stained glass, fishing overhaul</td></tr>
+    <tr><td>1.8</td><td>2014</td><td>Ocean monuments, new blocks</td></tr>
+    <tr><td>1.9</td><td>2016</td><td>Combat update: shields, Elytra</td></tr>
+    <tr><td>1.10</td><td>2016</td><td>Polar bears, fossils</td></tr>
+    <tr><td>1.11</td><td>2016</td><td>Exploration update: mansions, llamas</td></tr>
+    <tr><td>1.12</td><td>2017</td><td>World of Color, parrots</td></tr>
+    <tr><td>1.13</td><td>2018</td><td>Update Aquatic</td></tr>
+    <tr><td>1.14</td><td>2019</td><td>Villages & Pillage</td></tr>
+    <tr><td>1.15</td><td>2019</td><td>Bees, honey blocks</td></tr>
+    <tr><td>1.16</td><td>2020</td><td>Nether Update</td></tr>
+    <tr><td>1.17</td><td>2021</td><td>Caves & Cliffs Part 1</td></tr>
+    <tr><td>1.18</td><td>2021</td><td>Caves & Cliffs Part 2</td></tr>
+    <tr><td>1.19</td><td>2022</td><td>Wild Update</td></tr>
+    <tr><td>1.20</td><td>2023</td><td>Trails & Tales Update</td></tr>
+    <tr style="font-weight:bold; color:#7dbb2a;">
+      <td>1.21.11</td><td>2026</td><td>DawnCraft Modpack Version</td>
+    </tr>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2>FAQ</h2>
+  <div class="faq">
+    <div class="faq-item"><h3>What Minecraft version is supported?</h3><p>DawnCraft is built for Minecraft 1.21.11.</p></div>
+    <div class="faq-item"><h3>Do I need Fabric?</h3><p>Yes, DawnCraft runs on the Fabric loader.</p></div>
+    <div class="faq-item"><h3>How many mods?</h3><p>Over 100 mods included.</p></div>
+    <div class="faq-item"><h3>Is it multiplayer ready?</h3><p>Yes, optimized for SMP.</p></div>
+  </div>
+</section>
+
+<!-- REPORT -->
+<section id="report">
+  <h2>Report Issues</h2>
+  <p>If you encounter bugs or want to suggest features, report them on our GitHub page:</p>
+  <a href="https://github.com/McDawnCodes/DonSMP-Modpack/issues" target="_blank" class="download-btn">🐞 Report Issues</a>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="download">
+  <h2>Download DawnCraft</h2>
+  <a href="https://github.com/McDawnCodes/DonSMP-Modpack/releases/download/Vanilla%2B/Vanilla+.1.0.0.mrpack" 
+     class="download-btn" download>⬇️ Download DawnCraft</a>
+</section>
+
+<footer>© DawnCraft • Not affiliated with Mojang Studios</footer>
 
 </body>
 </html>
